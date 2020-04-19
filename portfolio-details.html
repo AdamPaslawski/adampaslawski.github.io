@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio Details - iPortfolio Bootstrap Template</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <title>MNIST Data-Set</title>
+  <meta name="Description" content="Analysis of the MNIST data set using a variational Autoencoder" >
+  <meta name="Machine Learning" content="Variational Autoencoder" >
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -26,13 +26,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio - v1.2.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -45,8 +38,8 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+        <img src="assets/img/profile-img2.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Adam Paslawski</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="linkedin.com/in/adam-paslawski-098b53162" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
@@ -61,79 +54,60 @@
         </ul>
       </nav><!-- .nav-menu -->
       <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
     </div>
   </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero-p" class="hero-2 d-flex flex-column justify-content-center align-items-center">
+      <div class="hero-container" data-aos="fade-in">
+        <h1>Teaching a computer to Handwrite</h1>
+      </div>
+    </section><!-- End Hero -->
 
   <main id="main">
-    <h1>This Section is under Construction, Come back soon!</h1>
-    <!-- ======= Breadcrumbs ======= -->
-    <!-- <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfoio Details</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Portfoio Details</li>
-          </ol>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Breadcrumbs -->
-
     <!-- ======= Portfolio Details Section ======= -->
-    <!-- <section id="portfolio-details" class="portfolio-details">
+    <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
         <div class="portfolio-details-container">
-
-          <div class="owl-carousel portfolio-details-carousel">
-            <img src="assets/img/portfolio-details-1.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio-details-2.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio-details-3.jpg" class="img-fluid" alt="">
-          </div>
-
-          <div class="portfolio-info">
-            <h3>Project information</h3>
-            <ul>
-              <li><strong>Category</strong>: Web design</li>
-              <li><strong>Client</strong>: ASU Company</li>
-              <li><strong>Project date</strong>: 01 March, 2020</li>
-              <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-            </ul>
-          </div>
-
         </div>
-
         <div class="portfolio-description">
-          <h2>This is an example of portfolio detail</h2>
+          <h1>Overview</h1>
           <p>
-            Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+            The MNIST data set is a collection of about 70,000 28x28 pixel images of handwritten digits like the one below.
           </p>
+          <div class="row" data-aos="fade-up">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <img src="assets/img/portfolio/entire9.png" alt="">
+            </div>
+          </div>
+          <p>
+            The goal of the project is to use a variational autoencoder to learn from this data and create a latent distribution from which we can draw samples from and sample handwritten digits.
+          </p>
+          <h5>Disclaimer</h5>
+          <p>
+            The techniques used in this project were done in the a course called Statistics
+             for Machine Learning taught by <a href="http://www.cs.toronto.edu/~duvenaud/">David Duvenaud</a>
+            and <a href="http://www.jessebett.com/">Jesse Bettencourt</a> and based on the paper <a href="https://arxiv.org/pdf/1312.6114.pdf">Auto-Encoding Variational Bayes
+            </a>.
+          </p>
+          <p>Now that credit has been given where it is most certainly due, lets get into it!</p>
+          <h1>The first obvious question:</br><em>"What the heck is a variational autoencoder?"</em></h1>
+          <p>A variational autoencoder has two pieces:</p>
+          <ol>
+            <li>encoder</li>
+            <li>decoder</li>
+          </ol>
+          <p>lets start with the first part, the encoder.</p>
+          
         </div>
-
       </div>
-    </section> -->
+    </section>
     <!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        <!-- &copy; Copyright <strong><span>iPortfolio</span></strong> -->
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-      </div>
-    </div>
+
   </footer><!-- End  Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
