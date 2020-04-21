@@ -313,7 +313,7 @@ blockquote cite {
 #hero-p {
   width: 100%;
   height: 35vh;
-  background: url("../img/portfolio/mlp.png") top center;
+  background: url("../img/portfolio/vae/mlp.png") top center;
   background-size: cover;
   background-position: center;
 }
@@ -338,6 +338,7 @@ blockquote cite {
 
 
 #hero-p h1 {
+  padding-left:12vw;
   margin: 0 0 10px 0;
   font-size: 64px;
   font-weight: 700;
@@ -571,6 +572,10 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.portfolio-title h1{
+  size:3rem;
+}
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
@@ -673,6 +678,15 @@ section {
 .portfolio-details {
   padding-top: 0;
 }
+.portfolio-details .square-img{
+  max-width:250px;
+}
+.portfolio-details .horrizontal-img{
+  max-width: 35rem;
+}
+.portfolio-details h1,p,h5{
+  z-index:1;
+}
 
 .portfolio-details .portfolio-details-container {
   position: relative;
@@ -743,6 +757,15 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+
+.portfolio-description img{
+  width: 100%;
+}
+.portfolio-description h1,h2,p{
+  z-index: 1;
+}
+
+#
 
 @media (max-width: 768px) {
   .portfolio-details .portfolio-description h2 {
