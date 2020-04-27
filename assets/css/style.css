@@ -54,6 +54,17 @@ blockquote:before {
   color: #7a7a7a;
 }
 
+blockquote:after{
+  display: block;
+  padding-left: 10px;
+  content: "\201D";
+  font-size: 80px;
+  position: absolute;
+  right: 50px;
+  top: -20px;
+  color: #7a7a7a;
+}
+
 blockquote cite {
   color: #999999;
   font-size: 14px;
@@ -338,7 +349,7 @@ blockquote cite {
 
 
 #hero-p h1 {
-  padding-left:12vw;
+  padding-left:30vw;
   margin: 0 0 10px 0;
   font-size: 64px;
   font-weight: 700;
@@ -364,6 +375,10 @@ blockquote cite {
 @media (min-width: 1024px) {
   #hero-p {
     background-attachment: fixed;
+  }
+  .container{
+    padding-left:200px;
+    padding-right:200px;
   }
 }
 
