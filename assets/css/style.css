@@ -319,9 +319,9 @@ blockquote cite {
   }
 }
 /*--------------------------------------------------------------
-# Portfolio Hero
+# Portfolio Hero - mnist
 --------------------------------------------------------------*/
-#hero-p {
+#hero-p{
   width: 100%;
   height: 35vh;
   background: url("../img/portfolio/vae/mlp.png") top center;
@@ -388,6 +388,82 @@ blockquote cite {
     line-height: 36px;
   }
   #hero-p h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Portfolio Hero - radon
+--------------------------------------------------------------*/
+#hero-radon{
+  width: 100%;
+  height: 35vh;
+  background: url("../img/archal/banner-img.jpg") top center;
+  background-size: cover;
+  background-position: center;
+}
+
+#hero-radon:before {
+  content: "";
+  background: rgba(5, 13, 24, 0.3);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height:35vh;
+}
+
+#hero-radon .hero-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+}
+
+
+#hero-radon h1 {
+  padding-left:30vw;
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+  background-color:rgba(0, 0, 0, 0.8);
+}
+
+#hero-radon p {
+  color: #fff;
+  margin-bottom: 50px;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero-radon p span {
+  color: #fff;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #149ddd;
+}
+
+@media (min-width: 1024px) {
+  #hero-radon {
+    background-attachment: fixed;
+  }
+  .container{
+    padding-left:200px;
+    padding-right:200px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-radon h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero-radon h2 {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
