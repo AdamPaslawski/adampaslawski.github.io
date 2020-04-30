@@ -79,49 +79,32 @@
             </p>
             <p class = "col-lg-12">In this project I modelled 85 counties in Minnesota using a heirarchal model.</p>
           </div>
-          <div class="row" data-aos="fade-left">
-            <h5 class = "col-lg-12" >The Predictors</h5>
-            <ul>
-                <li>House level : Whether or not the measurement was taken in the basement.</li>
-                <li>County Level: Uranium measurement of the soil.</li>
-            </ul>
-          </div>
-          <div class="row" data-aos="fade-left">
-          </div>
+          <img  class = "col-lg-12" src="assets/img/archal/radonflowchart.png" alt="
+            hierarchal model">
         </div>
 
 
         <!-- Encoder section -->
         <div class="portfolio-description">
           <div class="row" data-aos ="fade-left">
-            <h1 class = "col-lg-12">The Encoder</h1>
-            <p class = "col-lg-12">The Encoder takes a 28x28 pixel image and transforms those pixels with some fancy math to produce a latent representation of that image.</p>
-            <p class = "col-lg-12">If you're not sure what <em>latent version</em> is, thats fine just think of it as a much smaller condensed version of the image, for this case were going from 784 dimensions  (784 pixels) down to a mean and standard deviation for a normal distribution.</p>
-            <div class="container ">
-              <img  class = "horrizontal-img col-lg-12" src="assets/img/portfolio/vae/encoder.png" alt="Encoder Network">
-            </div>
-            <p class = "col-lg-12">Implemented like this:</p>
-            <div class="container ">
-              <pre>
-                <code>
-def neural_net_predict(params, inputs):
-"""Params is a list of (weights, bias) tuples.
-  inputs is an (N x D) matrix.
-  Applies batch normalization to every layer but the last."""
-for W, b in params:
-    outputs = np.dot(inputs, W) + b  # linear transformation
-    inputs = np.tanh(outputs)           # nonlinear transformation
-return outputs
-
-def nn_predict_gaussian(params, inputs):
-  #Returns means and diagonal variances
-  return unpack_gaussian_params(neural_net_predict(params, inputs))
-
-
-def encoder(x , rec_params):
-  return(nn_predict_gaussian(rec_params,x))
-                </code> 
-              </pre>
+            <h1 class="col-lg-12">Assumptions</h1>
+            <p>This model requires us to make a couple key assumptions</p>
+            <ol>
+              <li>Counties come from some underlying distribution based on some hyper paramaters.</li>
+              <li>Houses vary within a specific county dependant on that county.</li>
+            </ol>
+            <h2 class = "col-lg-12">Is this reasonable?</h2>
+            <p>
+              We are asserting that houses are part of some distribution within a specific county (in this case based on soil radon levels) and that counties themselves are part of some distribution.
+            </p>
+            <p>
+              The first assumption seems obviously reasonable, and the second makes a lot of sense when you consider the counties would be subject to similar legislation and building codes being in Minnesota and the United States as a whole.
+            </p>
+            <h1 class = "col-lg-12" >The Predictors</h1>
+            <ul>
+              <li>County Level: Uranium measurement of the soil.</li>
+              <li>House level : Whether or not the measurement was taken in the basement.</li>
+            </ul>
             </div>
         </div>
 
@@ -130,18 +113,13 @@ def encoder(x , rec_params):
         <!-- Decoder section -->
         <div class="portfolio-description">
           <div class="row" data-aos ="fade-left">
-            <h1 class = "col-lg-12">The Decoder</h1>
-            <p class = "col-lg-12">The decoder does the opposite in a sense. It takes an encoding of an image and <em>decodes</em> it to generate an image.</p>
-            <p class = "col-lg-12">So it take a latent representation of an image and transforms it into a 28x28 greyscale image.</p>
-            <div class="container ">
-              <img class = "horrizontal-img" src="assets/img/portfolio/vae/decoder.png" alt="Decoder network">
-            </div>
-            <p class = "col-lg-12">Implemented like this:</p>
+            <h1 class = "col-lg-12">The Analysis</h1>
+            <p class = "col-lg-12">We will a Bayesian approach leveraging some of the tools available , speciifcally Stan which is a useful programming language for Bayesian models.</p>
+            <p class = "col-lg-12">Implementing the model specified above... </p>
             <div class="container ">
               <pre>
                 <code>
-def decoder(params,z):
-  return(neural_net_predict(params,z))
+CODE GOES HERE FOR THE STAN MODEL
                 </code> 
               </pre>
             </div>
@@ -151,12 +129,9 @@ def decoder(params,z):
 
         <div class="portfolio-description ">
           <div class="row" data-aoe = "fade-left">
-            <h1 class = " col-lg-12" >Well That was easy!</h1>
-            <p class = "col-lg-12">Just kidding! If you encode and decode and image you should hope to get that same image back, but in the beginning we would get something like this!</p>
-            <div class="container ">
-              <img class = "col-lg-12 horrizontal-img" src="assets/img/portfolio/vae/decoder-foreal.jpg" alt="Encoder Decoder network producing noise">
-            </div>
-            <p class = "col-lg-12">Thats because the mathematical transformations are totally random and havent learned how to deconstruct and reconstruct these images ... yet.</p>
+            <h1 class = " col-lg-12" >Evaluating our results</h1>
+            <p class = "col-lg-12"></p>
+            <p class = "col-lg-12"></p>
           </div>
         </div>
 
