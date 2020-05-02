@@ -119,7 +119,47 @@
             <div class="container ">
               <pre>
                 <code>
-CODE GOES HERE FOR THE STAN MODEL
+data {
+  int<lower=1> num_county; //# of counties
+  int<lower=1> I;          // # of observations
+  int<lower=1> J;          // # of collumns in dataset
+  matrix[I,J] obs;
+  vector[num_county] mu;   //County level uranium measurement
+  int counties[I];
+}
+parameters {
+  vector[num_county] z;
+  vector[num_county] alpha;
+  real gamma_0;
+  real gamma_1;
+  real beta;
+  real<lower=0> sigma;
+  real<lower=0> tau;
+}
+
+
+model {
+    //priors yes theres 5 of them I know its crazy
+    //beta gamma_0, gamma_1
+    beta ~ normal(0,9);
+    gamma_0 ~ normal(0,9);
+    gamma_1 ~ normal(0,9);
+    //sigma tau
+    sigma ~ normal(0,9);
+    tau ~ normal(0,9);
+    //liklihood
+    for (j in 1:num_county){
+      z[j] ~ normal(0,1);
+    }
+    //First level of the heirarchal model
+    for (i in 1:I){
+      obs[i,3] ~ normal(alpha[counties[i]] + beta*obs[i,1], sigma);
+    }
+    //Second level of heirarchal model
+    for (j in 1:num_county){
+      alpha[j] ~ normal(gamma_0 + gamma_1*mu[j]+2*z[j]*tau,tau);
+    }
+}
                 </code> 
               </pre>
             </div>
@@ -129,64 +169,23 @@ CODE GOES HERE FOR THE STAN MODEL
 
         <div class="portfolio-description ">
           <div class="row" data-aoe = "fade-left">
-            <h1 class = " col-lg-12" >Evaluating our results</h1>
-            <p class = "col-lg-12"></p>
-            <p class = "col-lg-12"></p>
+            <h1 class = " col-lg-12" >Evaluating the Implementation: </h1>
+            <p class = "col-lg-12"> One extremely important aspect of any bayesian analysis is the prior predictive distribution and ensuring that it is reasonable. If we simulate from our prior we can see the types of values that the prior allows for.</p>
+            <div class="container">
+              <img src="assets/img/archal/radonprior.jpg" alt="prior predictive distribution">
+            </div>
+            <p class = "col-lg-12">As you can see the prior allows for and expects to see radon levels within a normal range but also allows for some outliers and allows the data to surprise us a little bit.</p>
+            <p class = "col-lg-12">For example the largest draw from our prior predictive distribution was three times larger than the largest actual observation in the data set.</p>
           </div>
         </div>
 
-        <div class="portfolio-description">
-          <div class="row" data-aoe = "fade-left">
-            <h1 class = "col-lg-12">Training</h1>
-            <p class = "col-lg-12">Just like great athletes , variational autoencoders need lots of training.</p>
-            <p class = "col-lg-12">We will do this by trying to make sure when we deconstruct and reconstruct an image we get close to the same thing back.</p>
-            <p class="col-lg-12">Mathematically we are maximizing a lower bound estimate of the loss which is outlined in <a href="https://arxiv.org/pdf/1312.6114.pdf">the paper this is based on.</a></p>
-            <p class="col-lg-12">Implementing this in a scalable  way:</p>
-            <div class="container ">
-              <pre>
-                <code>
-  def vae_lower_bound(gen_params, rec_params, data, rs):
-    # We use a simple Monte Carlo estimate of the KL
-    # divergence from the prior.
-    q_means, q_log_stds = encoder(data , rec_params)
-    latents = sample_diag_gaussian(q_means , q_log_stds,npr.RandomState(0))
-    log_q_z = diag_gaussian_log_density(latents,q_means,q_log_stds)
-    log_prior_z = log_prior(latents)
-    log_p_x_given_z = log_likelihood(gen_params, data, latents)
-    joint = log_prior_z + log_p_x_given_z
-    elbo_estimate = np.mean(joint - log_q_z)
-    return elbo_estimate
-                </code>
-              </pre>
-            </div>
-          </div>
-          <p class = "col-lg-12">Now if we compare original images with the generated version below we can see:</p>
-          <div class="container ">
-            <img class = "horrizontal-img", src="assets/img/portfolio/vae/2by10plot.png" alt="">
-          </div>
-          <p class="col-lg-12">They look remarkably similar, which means our model has been trained well!</p>
-        </div>
         <div class="portfolio-description ">
           <div class="row" data-aoe = "fade-left">
             <h1 class="col-lg-12">Application</h1>
             <!-- Application 1 -->
-            <h2 class = " col-lg-12" >1. Getting Our Computer to Handwrite</h1>
-            <p class = "col-lg-12">One application of a variational autoencoder is using it to generate unseen data.</p>
-            <div class="container ">
-              <img class = "square-img" src="assets/img/portfolio/vae/entire9-generated.png" alt="Handwritten number 9">
-            </div>
-            <p class = "col-lg-12">So we have learned what a handwritten "9" looks like, sampled it from our latent distribution and decoded it to the image you see above using our decoder network.</p>
-            <!-- Application 2 -->
-            <h2 class = " col-lg-12" >2. Interpolating Between Handwritten Numbers.</h1>
-            <p class = "col-lg-12">Since the digits "live" in  a latent space so we can interpolate between numbers and see how the model is understanding how digits are related.</p>
-            <div class="container ">
-              <img class = "horrizontal-img" src="assets/img/portfolio/vae/interpolation.png" alt="Handwritten number 9">
-            </div>
-            <!-- Application 3 -->
-            <h2 class = " col-lg-12" >3. Predicting the bottom half of the image given the top</h1>
-            <p class = "col-lg-12">Another application is generating the bottom half of the image given the top.</p>
-            <p class="col-lg-12">This requires a little more work but is based on the exact same principles.</p>
-            <!-- <img class = "square-img" src="assets/img/portfolio/vae/entire9-generated.png" alt="Handwritten number 9"> -->
+            <h2 class = " col-lg-12" ></h1>
+            <p class = "col-lg-12"></p>
+            <p class = "col-lg-12"></p>
           </div>
         </div>
       </div>

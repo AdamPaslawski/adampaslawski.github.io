@@ -138,6 +138,12 @@
     });
   });
 
+
+  //Portfolio on click event
+  function portfolioFunction() {
+    window.location.href = "https://adampaslawski.github.io/portfolio-details.html";
+  }
+
   // Testimonials carousel (uses the Owl Carousel library)
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,
