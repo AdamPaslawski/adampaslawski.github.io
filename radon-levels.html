@@ -70,16 +70,16 @@
         <!-- OVERVIEW -->
         <div class="portfolio-description">
           <h1 class = "col-lg-12">Overview</h1>
-          <p class = "col-lg-12">
-            
-          </p>
           <div class="row" data-aos="fade-left">
             <p class = "col-lg-12">
               Radon is a carcinogenic naturally ocurring gas which is estimated to cause thousands of lung cancer deaths every year in the United States.
             </p>
-            <p class = "col-lg-12">In this project I modelled 85 counties in Minnesota using a heirarchal model.</p>
-          </div>
-          <img  class = "col-lg-12" src="assets/img/archal/radonflowchart.png" alt="
+            <p class = "col-lg-12">In this project I modelled 85 counties in Minnesota using a heirarchal model that leverages partial pooling.</p>
+            <div class="col-lg-12 square-image">
+              <img src="assets/img/archal/math-model.png" alt="" class="col-lg-12">
+            </div>
+            <p>graphically it looks something like this:</p>
+            <img  class = "col-lg-12" src="assets/img/archal/radonflowchart.png" alt="
             hierarchal model">
         </div>
 
@@ -176,16 +176,54 @@ model {
             </div>
             <p class = "col-lg-12">As you can see the prior allows for and expects to see radon levels within a normal range but also allows for some outliers and allows the data to surprise us a little bit.</p>
             <p class = "col-lg-12">For example the largest draw from our prior predictive distribution was three times larger than the largest actual observation in the data set.</p>
+            <p class="col-lg-12">As far as priors go this is quite uninformative, but this is intentional as I have minimal experience that would give me some insight as to what radon levels in Minnesota should look like.</p>
+            <h1 class = "col-lg-12">The Model</h1>
+            <p class = "col-lg-12">The output parameters of note were:</p>
+            <div class="container">
+              <img src="assets/img/archal/coefficients.png" alt="">
+            </div>
+            <p class = "col-lg-12">So the result is a set of parameters for a model built around our assumptions that we stated earlier.</p>
           </div>
         </div>
 
         <div class="portfolio-description ">
           <div class="row" data-aoe = "fade-left">
-            <h1 class="col-lg-12">Application</h1>
-            <!-- Application 1 -->
-            <h2 class = " col-lg-12" ></h1>
-            <p class = "col-lg-12"></p>
-            <p class = "col-lg-12"></p>
+            <h1 class="col-lg-12">Evaluating the Results</h1>
+            <h2 class = " col-lg-12" >Comparing to a no pooling case</h2>
+            <p>Such a case would look something like this:</p>
+            <div class="container">
+              <img src="assets/img/archal/no-pooling.png" alt="">
+            </div>
+            <p class = "col-lg-12">If we assume no pooling and estimate each neighbourhood independently the results are far worse.</p>
+            <p class = "col-lg-12">The estimate for each neighbourhood has massive variance and is very unreliable, in reality if we analyze the data in this way the results are essentially useless.</p>
+            <h2 class="col-lg-12">Comparing to the total pooling case.</h2>
+            <p>Total pooling would have a model that looks more like this</p>
+            <div class="container">
+              <img src="assets/img/archal/total-pooling.png" alt="">
+            </div>
+            <p>Which albeit performs better than no pooling but still has estimates that are worse than the partial pooling.</p>
+          </div>
+        </div>
+        <div class="portfolio-description ">
+          <div class="row" data-aoe = "fade-left">
+            <h1>Using the Results</h1>
+            <p>Plainly, the result is a model that can predict radon levels in a household. Radon levels are highly correlated to some health complications, specifically lung cancer.</p>
+            <h2 class = "col-lg-12">Recommendations</h2>
+            <p>The analysis clearly shows that having a basement can make it far easier for radon gas to enter the home, especially in areas where there is a high radon level in the soil.</p>
+            <p>In combination with some data on Radon gas' conection to lung cancer, this model could be used to determine when it is too costly to the population to have basements in certain areas. Thus, informing building codes and regulations for the area based on a quantitative metric, projected health care costs, and health risk to residents.</p>
+          </div>
+          <div class="row" data-aoe = "fade-left">
+            <h1>Summary</h1>
+            <p>In the report we went through each of these seven steps in detail.</p>
+            <ol>
+              <li>We stated the assumptions for our model.</li>
+              <li>We made sure our assumptions made sense.</li>
+              <li>We determined the predictors that would be used.</li>
+              <li>We performed the analysis according to those assumptions and predictors.</li>
+              <li>We evaluated our implementation and ensured our prior was reasonable.</li>
+              <li>We benchmarked our model by comparing it to other potential models to ensure we had quality results that fully utilized the data we had.</li>
+              <li>We discussed how the results could be used to better society and how we could proceed.</li>
+            </ol>
           </div>
         </div>
       </div>
